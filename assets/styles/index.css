@@ -1,0 +1,200 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000000;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
+}
+.banner {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 100vh;
+}
+.banner-text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    animation: fadeIn 3s;
+}
+
+
+.banner-subtext {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4rem;
+    font-family: 'Dancing Script', cursive;
+    font-weight: normal;
+    background: linear-gradient(to right, violet, orange);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #ffffff;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+section {
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    padding: 80px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+html {
+    scroll-snap-type: none;  /* Temporarily disable scroll-snap */
+    scroll-behavior: smooth;
+}
+
+
+section:first-of-type {
+    border-top: none;
+}
+
+.bg-light-custom {
+    background-color: #1e1e1e;
+}
+
+/* About Me Section Styling */
+.bg-light-custom {
+    background-color: #f4f4f9;
+    padding: 50px 0;
+}
+
+#about h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+}
+
+#about .container {
+    max-width: 1140px;
+}
+
+#about .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#about .col-md-6 {
+    margin-bottom: 30px;
+}
+
+#about .col-md-6 img {
+    object-fit: cover;
+    border: 4px solid #f4f4f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+#about p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    #about .row {
+        flex-direction: column;
+    }
+
+    #about .col-md-6 img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+
+.skill-badge {
+    margin: 5px;
+    padding: 10px 15px;
+    font-size: 1rem;
+}
+
+.portfolio-card {
+    background-color: #2a2a2a;
+    border: none;
+    color: #e0e0e0;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+footer {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    padding: 20px 0;
+    text-align: center;
+    scroll-snap-align: start;
+}
+#profile-image {
+    width: 250px;  /* Increased size */
+    height: 250px; /* Increased size */
+    object-fit: cover; /* Ensures the image stays within the circle shape */
+    border-radius: 50%; /* Ensures the image is circular */
+    border: 4px solid #f4f4f9; /* Optional: add border around the image */
+}
+
+
+#contact {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #0077b5; /* LinkedIn blue */
+}
+
+.social-icon i {
+    margin-right: 8px;
+}
