@@ -1,0 +1,185 @@
+---
+const projects = [
+  {
+    title: 'P2P File Sharing System',
+    description: 'A decentralized file sharing application built with libp2p and Go. Features content-addressed storage, NAT traversal, and end-to-end encryption for secure peer discovery and data transfer.',
+    tags: ['Go', 'libp2p', 'IPFS', 'Cryptography'],
+    github: 'https://github.com/MOHANKUMAR-IT',
+    image: '/projects/p2p-file.svg',
+    featured: true,
+  },
+  {
+    title: 'Cross-Platform Build System',
+    description: 'A sophisticated CMake-based build system supporting Windows, Linux, and macOS. Implements modular architecture with dependency management, testing integration, and CI/CD pipelines.',
+    tags: ['C++', 'CMake', 'Cross-Platform', 'CI/CD'],
+    github: 'https://github.com/MOHANKUMAR-IT',
+    image: '/projects/build-system.svg',
+    featured: true,
+  },
+  {
+    title: 'Distributed Message Queue',
+    description: 'High-performance message broker implementing custom protocols over gRPC. Supports pub/sub patterns, message persistence, and horizontal scaling across nodes.',
+    tags: ['Go', 'gRPC', 'MongoDB', 'Docker'],
+    github: 'https://github.com/MOHANKUMAR-IT',
+    image: '/projects/message-queue.svg',
+    featured: true,
+  },
+  {
+    title: 'Windows System Monitor',
+    description: 'Native Windows application for real-time system monitoring. Uses Win32 APIs for process management, performance counters, and system diagnostics with minimal resource footprint.',
+    tags: ['C++', 'Windows', 'Win32 API', 'Performance'],
+    github: 'https://github.com/MOHANKUMAR-IT',
+    image: '/projects/system-monitor.svg',
+    featured: false,
+  },
+];
+---
+
+<section id="projects" class="py-32 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="text-[var(--color-accent)] text-sm uppercase tracking-widest mb-4 reveal-on-scroll">
+        My Work
+      </p>
+      <h2 class="text-4xl md:text-5xl font-bold reveal-on-scroll">
+        Featured <span class="gradient-text">Projects</span>
+      </h2>
+      <p class="text-[var(--color-text-secondary)] mt-4 max-w-2xl mx-auto reveal-on-scroll">
+        A selection of projects showcasing my expertise in distributed systems, 
+        cross-platform development, and low-level programming.
+      </p>
+    </div>
+    
+    <div class="space-y-24">
+      {projects.filter(p => p.featured).map((project, index) => (
+        <div class={`grid lg:grid-cols-2 gap-12 items-center reveal-on-scroll ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
+          <!-- Project visual -->
+          <div class={`relative group ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+            <div class="absolute -inset-4 bg-gradient-to-r from-[var(--color-accent)] to-purple-500 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
+            <div class="relative glass-card p-8 aspect-video flex items-center justify-center overflow-hidden">
+              <!-- Abstract project visualization -->
+              <div class="absolute inset-0 opacity-20">
+                <div class="absolute top-1/4 left-1/4 w-32 h-32 border border-[var(--color-accent)] rounded-full animate-pulse"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-24 h-24 border border-purple-500 rounded-full animate-pulse" style="animation-delay: 0.5s"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 border border-[var(--color-text-muted)] rounded-full"></div>
+                {/* Connection lines */}
+                <svg class="absolute inset-0 w-full h-full">
+                  <line x1="30%" y1="30%" x2="70%" y2="70%" stroke="var(--color-accent)" stroke-width="1" opacity="0.3"/>
+                  <line x1="70%" y1="30%" x2="30%" y2="70%" stroke="var(--color-accent)" stroke-width="1" opacity="0.3"/>
+                </svg>
+              </div>
+              
+              <div class="relative z-10 text-center">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[var(--color-accent)] to-purple-500 flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </div>
+                <p class="text-lg font-medium">{project.title}</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project info -->
+          <div class={index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}>
+            <h3 class="text-2xl md:text-3xl font-bold mb-4 group">
+              <a href={project.github} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-accent)] transition-colors">
+                {project.title}
+                <svg class="inline-block w-5 h-5 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </h3>
+            
+            <p class="text-lg text-[var(--color-text-secondary)] mb-6">
+              {project.description}
+            </p>
+            
+            <div class="flex flex-wrap gap-2 mb-6">
+              {project.tags.map(tag => (
+                <span class="px-3 py-1 text-sm glass-card text-[var(--color-accent)]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <a 
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-[var(--color-text-primary)] hover:text-[var(--color-accent)] transition-colors"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+              </svg>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Other projects grid -->
+    <div class="mt-24">
+      <h3 class="text-2xl font-bold text-center mb-12 reveal-on-scroll">Other Projects</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.filter(p => !p.featured).map(project => (
+          <a 
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-card p-6 group hover:border-[var(--color-accent)] transition-all reveal-on-scroll"
+          >
+            <div class="flex items-start justify-between mb-4">
+              <svg class="w-10 h-10 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+              </svg>
+              <svg class="w-5 h-5 text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </div>
+            
+            <h4 class="text-lg font-semibold mb-2 group-hover:text-[var(--color-accent)] transition-colors">
+              {project.title}
+            </h4>
+            
+            <p class="text-sm text-[var(--color-text-secondary)] mb-4 line-clamp-3">
+              {project.description}
+            </p>
+            
+            <div class="flex flex-wrap gap-2">
+              {project.tags.slice(0, 3).map(tag => (
+                <span class="text-xs text-[var(--color-text-muted)]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))}
+        
+        <!-- View all card -->
+        <a 
+          href="https://github.com/MOHANKUMAR-IT?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="glass-card p-6 flex flex-col items-center justify-center text-center group hover:border-[var(--color-accent)] transition-all reveal-on-scroll"
+        >
+          <svg class="w-12 h-12 text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4" />
+          </svg>
+          <p class="font-medium group-hover:text-[var(--color-accent)] transition-colors">View All Projects</p>
+          <p class="text-sm text-[var(--color-text-muted)]">on GitHub</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

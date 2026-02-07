@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/* Apple-inspired Design System */
+@theme {
+  /* Colors - Dark mode first */
+  --color-bg-primary: oklch(0% 0 0);
+  --color-bg-secondary: oklch(10% 0 0);
+  --color-bg-glass: oklch(15% 0 0 / 0.6);
+  --color-text-primary: oklch(98% 0 0);
+  --color-text-secondary: oklch(70% 0 0);
+  --color-text-muted: oklch(50% 0 0);
+  --color-accent: oklch(65% 0.25 260);
+  --color-accent-hover: oklch(70% 0.28 260);
+  --color-border: oklch(25% 0 0);
+  --color-border-glass: oklch(30% 0 0 / 0.5);
+  
+  /* Typography */
+  --font-sans: 'Inter Variable', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* Spacing */
+  --spacing-section: 8rem;
+  --spacing-container: clamp(1.5rem, 5vw, 6rem);
+  
+  /* Transitions */
+  --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  
+  /* Border radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+}
+
+/* Light mode colors */
+:root[data-theme="light"] {
+  --color-bg-primary: oklch(99% 0 0);
+  --color-bg-secondary: oklch(96% 0 0);
+  --color-bg-glass: oklch(100% 0 0 / 0.7);
+  --color-text-primary: oklch(10% 0 0);
+  --color-text-secondary: oklch(35% 0 0);
+  --color-text-muted: oklch(55% 0 0);
+  --color-border: oklch(90% 0 0);
+  --color-border-glass: oklch(85% 0 0 / 0.5);
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* Glass card utility */
+.glass-card {
+  background: var(--color-bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-glass);
+  border-radius: var(--radius-lg);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-accent), oklch(70% 0.2 300));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--duration-slow) var(--ease-apple) forwards;
+}
+
+/* Stagger delays */
+.delay-1 { animation-delay: 100ms; }
+.delay-2 { animation-delay: 200ms; }
+.delay-3 { animation-delay: 300ms; }
+.delay-4 { animation-delay: 400ms; }
+.delay-5 { animation-delay: 500ms; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  .animate-fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

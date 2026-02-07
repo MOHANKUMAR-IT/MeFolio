@@ -1,0 +1,133 @@
+---
+const skillCategories = [
+  {
+    title: 'Languages',
+    skills: [
+      { name: 'C/C++', level: 95, description: 'Systems programming, memory management, STL' },
+      { name: 'Go', level: 90, description: 'Concurrent programming, microservices, CLI tools' },
+      { name: 'JavaScript', level: 75, description: 'Node.js, Web APIs, TypeScript' },
+    ]
+  },
+  {
+    title: 'Technologies',
+    skills: [
+      { name: 'libp2p', level: 90, description: 'Peer-to-peer networking stack' },
+      { name: 'IPFS', level: 85, description: 'Distributed file storage' },
+      { name: 'gRPC', level: 85, description: 'High-performance RPC framework' },
+      { name: 'Docker', level: 80, description: 'Containerization, multi-stage builds' },
+    ]
+  },
+  {
+    title: 'Platforms & Tools',
+    skills: [
+      { name: 'Windows', level: 90, description: 'Win32 API, system programming' },
+      { name: 'CMake', level: 85, description: 'Cross-platform build systems' },
+      { name: 'Linux', level: 80, description: 'System administration, shell scripting' },
+    ]
+  },
+  {
+    title: 'Databases',
+    skills: [
+      { name: 'MongoDB', level: 80, description: 'NoSQL, aggregation pipelines' },
+      { name: 'SQLite', level: 85, description: 'Embedded databases, optimization' },
+    ]
+  },
+];
+---
+
+<section id="skills" class="py-32 px-6 bg-[var(--color-bg-secondary)]">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="text-[var(--color-accent)] text-sm uppercase tracking-widest mb-4 reveal-on-scroll">
+        What I Work With
+      </p>
+      <h2 class="text-4xl md:text-5xl font-bold reveal-on-scroll">
+        Technical <span class="gradient-text">Expertise</span>
+      </h2>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      {skillCategories.map((category, categoryIndex) => (
+        <div class="glass-card p-8 reveal-on-scroll" style={`transition-delay: ${categoryIndex * 100}ms`}>
+          <h3 class="text-xl font-semibold mb-6 text-[var(--color-text-primary)]">
+            {category.title}
+          </h3>
+          
+          <div class="space-y-6">
+            {category.skills.map(skill => (
+              <div class="group">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
+                    {skill.name}
+                  </span>
+                  <span class="text-sm text-[var(--color-text-muted)]">
+                    {skill.level}%
+                  </span>
+                </div>
+                
+                <div class="h-2 bg-[var(--color-bg-primary)] rounded-full overflow-hidden">
+                  <div 
+                    class="h-full bg-gradient-to-r from-[var(--color-accent)] to-purple-500 rounded-full transition-all duration-1000 ease-out skill-bar"
+                    style={`--skill-level: ${skill.level}%`}
+                    data-level={skill.level}
+                  ></div>
+                </div>
+                
+                <p class="text-sm text-[var(--color-text-muted)] mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  {skill.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Additional skills as tags -->
+    <div class="mt-16 text-center reveal-on-scroll">
+      <p class="text-[var(--color-text-muted)] mb-6">Also experienced with:</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        {['Git', 'CI/CD', 'REST APIs', 'WebSockets', 'Networking', 'Cryptography', 'Testing', 'Debugging'].map(skill => (
+          <span class="px-4 py-2 glass-card text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-all cursor-default">
+            {skill}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skill-bar {
+    width: 0;
+    transition: width 1.5s var(--ease-apple);
+  }
+  
+  .is-visible .skill-bar {
+    width: var(--skill-level);
+  }
+</style>
+
+<script>
+  // Animate skill bars when section is visible
+  const skillSection = document.getElementById('skills');
+  const skillBars = document.querySelectorAll('.skill-bar');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        skillBars.forEach(bar => {
+          const level = bar.getAttribute('data-level');
+          setTimeout(() => {
+            bar.style.width = level + '%';
+          }, 300);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  
+  if (skillSection) {
+    observer.observe(skillSection);
+  }
+</script>
